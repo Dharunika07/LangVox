@@ -3,11 +3,8 @@ from gtts import gTTS
 import gradio as gr
 from translate import Translator
 import speech_recognition as sr
-#from Flaskrender import *
-import streamlit as st
-
-st.beta_set_page_config(page_title="LangVox",layout="wide", initial_sidebar_state="expanded", share=True)
-
+# from Flaskrender import *
+# from Flaskrender import Render
 
 os.environ['TF_CPP_MIN_LOG_LEVEL']='3'
 
@@ -92,7 +89,7 @@ class GRadioInterface:
     
     def start(self):
         """ [Launching the interface in a tabbed manner.] """
-        #main()
+        #instance=Render()
         it_1 = gr.Interface(fn=self._function, inputs=self._inputs,outputs=self.outputs,
             title = self.title,
             description=  self.description,
@@ -118,5 +115,7 @@ class GRadioInterface:
         demo = gr.TabbedInterface([it_1, it_2, it_3],['Speech Synthesis', 'Sentence Translation', 'Automatic Speech Recognition'])
         demo.launch()
 
-demo_app = GRadioInterface(function=convert_text)
-demo_app.start()
+def start():    
+    demo_app = GRadioInterface(function=convert_text)
+    demo_app.start()
+
